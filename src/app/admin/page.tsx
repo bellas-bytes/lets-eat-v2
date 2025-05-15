@@ -10,7 +10,6 @@ interface User {
   name: string | null
   isApproved: boolean
 }
-
 export default function AdminPage() {
   const { data: session, status } = useSession()
   const router = useRouter()
@@ -18,45 +17,38 @@ export default function AdminPage() {
 
   useEffect(() => {
     if (status === 'loading') return
-
     if (!session?.user?.isAdmin) {
-      router.push('/') // redirect non-admins
+      router.push('/')
     }
   }, [session, status, router])
 
   useEffect(() => {
     if (session?.user?.isAdmin) {
-      fetch('/api/admin/users').then(res => res.json()).then(setUsers)
+      fetch('/api/admin/users')
+        .then(res => res.json())
+        .then(setUsers)
     }
   }, [session])
+
+  const approve = async (email: string) => {
+    const res = await fetch('/api/admin/approve', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email }),
+    })
+
+    if (res.ok) {
+      setUsers((prev: User[]) =>
+        prev.map((u: User) =>
+          u.email === email ? { ...u, isApproved: true } : u
+        )
+      )
+    }
+  }
 
   if (status === 'loading' || !session?.user?.isAdmin) {
     return <p className="p-4">Checking access...</p>
   }
-
-    async function approve(email: string): Promise<void> {
-        try {
-            const response = await fetch('/api/admin/approve', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ email }),
-            });
-
-            if (!response.ok) {
-                throw new Error('Failed to approve user');
-            }
-
-            setUsers(prevUsers =>
-                prevUsers.map(user =>
-                    user.email === email ? { ...user, isApproved: true } : user
-                )
-            );
-        } catch (error) {
-            console.error('Error approving user:', error);
-        }
-    }
 
   return (
     <div className="p-6 max-w-xl mx-auto">

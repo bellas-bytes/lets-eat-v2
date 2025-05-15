@@ -124,8 +124,36 @@ exports.Prisma.UserScalarFieldEnum = {
   id: 'id',
   email: 'email',
   name: 'name',
-  image: 'image',
-  isApproved: 'isApproved'
+  isApproved: 'isApproved',
+  isAdmin: 'isAdmin'
+};
+
+exports.Prisma.EventScalarFieldEnum = {
+  id: 'id',
+  title: 'title',
+  imageUrl: 'imageUrl',
+  description: 'description',
+  location: 'location',
+  date: 'date',
+  createdById: 'createdById',
+  createdAt: 'createdAt'
+};
+
+exports.Prisma.TeamMemberScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  role: 'role',
+  bio: 'bio',
+  imageUrl: 'imageUrl',
+  addedById: 'addedById'
+};
+
+exports.Prisma.ResourceScalarFieldEnum = {
+  id: 'id',
+  title: 'title',
+  url: 'url',
+  description: 'description',
+  addedById: 'addedById'
 };
 
 exports.Prisma.SortOrder = {
@@ -145,7 +173,10 @@ exports.Prisma.NullsOrder = {
 
 
 exports.Prisma.ModelName = {
-  User: 'User'
+  User: 'User',
+  Event: 'Event',
+  TeamMember: 'TeamMember',
+  Resource: 'Resource'
 };
 
 /**

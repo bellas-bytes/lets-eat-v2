@@ -1,4 +1,3 @@
-// types/next-auth.d.ts
 import NextAuth from "next-auth"
 
 declare module "next-auth" {
@@ -7,8 +6,8 @@ declare module "next-auth" {
       id?: string
       email?: string | null
       name?: string | null
-      image?: string | null
       isApproved?: boolean
+      isAdmin?: boolean
     }
   }
 }

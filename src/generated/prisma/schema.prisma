@@ -15,9 +15,43 @@ datasource db {
 }
 
 model User {
-  id         String  @id @default(cuid())
-  email      String  @unique
+  id         String       @id @default(cuid())
+  email      String       @unique
   name       String?
-  image      String?
-  isApproved Boolean @default(false)
+  isApproved Boolean      @default(false)
+  isAdmin    Boolean      @default(false) // ← Add this
+  Event      Event[]
+  TeamMember TeamMember[]
+  Resource   Resource[]
+}
+
+model Event {
+  id          String   @id @default(cuid())
+  title       String
+  imageUrl    String
+  description String
+  location    String
+  date        DateTime
+  createdBy   User     @relation(fields: [createdById], references: [id])
+  createdById String
+  createdAt   DateTime @default(now())
+}
+
+model TeamMember {
+  id        String @id @default(cuid())
+  name      String
+  role      String
+  bio       String
+  imageUrl  String
+  addedBy   User   @relation(fields: [addedById], references: [id])
+  addedById String
+}
+
+model Resource {
+  id          String @id @default(cuid())
+  title       String
+  url         String
+  description String
+  addedBy     User   @relation(fields: [addedById], references: [id])
+  addedById   String
 }
