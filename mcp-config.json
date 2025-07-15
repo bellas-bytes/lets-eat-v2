@@ -1,0 +1,14 @@
+{
+  "mcpServers": {
+    "MongoDB": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "mongodb-mcp-server",
+        "--connectionString",
+        "mongodb+srv://let-eat-admin:${MONGODB_PASSWORD}@lets-eat.7gvsmbt.mongodb.net/",
+        "--readOnly"
+      ]
+    }
+  }
+} 

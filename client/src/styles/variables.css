@@ -1,0 +1,47 @@
+:root {
+  /* Primary Colors */
+  --primary-green: #77AA9A;
+  --primary-red: #D05B3F;
+  --primary-orange: #E5852F;
+  --primary-blue: #152282F;
+  --primary-beige: #CCCAB8;
+  --primary-cream: #DDD1A4;
+  
+  /* Color Variations */
+  --primary-green-light: #8BB8A8;
+  --primary-green-dark: #5A8A7A;
+  --primary-red-light: #E06B4F;
+  --primary-red-dark: #B04B2F;
+  --primary-orange-light: #F5953F;
+  --primary-orange-dark: #C5751F;
+  --primary-blue-light: #253292F;
+  --primary-blue-dark: #051272F;
+  --primary-beige-light: #DCDAB8;
+  --primary-beige-dark: #BCBAA8;
+  --primary-cream-light: #EDE1B4;
+  --primary-cream-dark: #CDC1A4;
+  
+  /* Semantic Colors */
+  --success: var(--primary-green);
+  --warning: var(--primary-orange);
+  --error: var(--primary-red);
+  --info: var(--primary-blue);
+  --background: var(--primary-cream);
+  --surface: var(--primary-beige);
+  
+  /* Text Colors */
+  --text-primary: #2C3E50;
+  --text-secondary: #5A6C7D;
+  --text-light: #7F8C8D;
+  --text-white: #FFFFFF;
+  
+  /* Border Colors */
+  --border-light: var(--primary-beige);
+  --border-medium: var(--primary-green);
+  --border-dark: var(--primary-blue);
+  
+  /* Shadow Colors */
+  --shadow-light: rgba(119, 170, 154, 0.1);
+  --shadow-medium: rgba(119, 170, 154, 0.2);
+  --shadow-dark: rgba(119, 170, 154, 0.3);
+} 
